@@ -57,7 +57,7 @@ mkDirs() {
 copyConfigs() {
 	cp bspwm/examples/bspwmrc ~/.config/bspwm
 	chmod +x ~/.config/bspwm/bspwmrc
-	cp bspwm/examples/sxhkdrc ~/.confing/sxhkd/sxhkdrc
+	cp bspwm/examples/sxhkdrc ~/.config/sxhkd/sxhkdrc
 }
 
 main() {
