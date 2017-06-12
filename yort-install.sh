@@ -2,17 +2,17 @@
 
 #this thing installs yaourt from the AUR
 
-get(){
+get() {
 	wget https://aur.archlinux.org/cgit/aur.git/snapshot/package-query.tar.gz
 	wget https://aur.archlinux.org/cgit/aur.git/snapshot/yaourt.tar.gz
 }
 
-extract(){
+extract() {
 	tar -zxvf yaourt.tar.gz
 	tar -zxvf package-query.tar.gz
 }
 
-buildnstall(){
+buildnstall() {
 	cd package-query
 	makepkg -si
 	cd ..
@@ -23,7 +23,7 @@ buildnstall(){
 	echo "Ye'ourt has bean installd.\n"
 }
 
-optionstall(){
+optionstall() {
 	OPTIONSTALL=""
 	echo "If you are feeling sassy, you may now enter a list of AUR (or not) programs and we will attempt to install.\
 		 press ctrl+c to quit. ofc"
