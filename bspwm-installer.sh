@@ -2,12 +2,7 @@
 # this script will hopefully grab bspwm, all its deps, build it, build the 
 # panel stuff, and copy relevant configs
 # things to add:
-# actual panel support
 # ways to not break an existing install
-# rofi support
-# change term to xterm if it isnt?
-# add rice to bspwm, boiling intensifies
-# add some fucking logic for christs sake
 
 
 gitit() {
@@ -55,18 +50,37 @@ mkDirs() {
 }
 
 copyConfigs() {
-	cp bspwm/examples/bspwmrc ~/.config/bspwm
+	wget https://raw.githubusercontent.com/bursday/burs/master/.config/bspwm/bspwmrc
+	bspwmrc ~/.config/bspwm
 	chmod +x ~/.config/bspwm/bspwmrc
-	cp bspwm/examples/sxhkdrc ~/.config/sxhkd/sxhkdrc
+	wget https://raw.githubusercontent.com/bursday/burs/master/.config/sxhkd/sxhkdrc
+	sxhkdrc ~/.config/sxhkd/sxhkdrc
+}
+
+echoinitrc() {
+	echo "export PANEL_FIFO=\"/tmp/panel-fifo\""
+	echo "xrdb merge ./.Xresources &"
+	echo "compton --config .compton.conf &"
+	echo "sxhkd &"
+	echo "exec bspwm"
+}
+
+setup_panel () {
+	mkdir -p /home/`whoami`/bin
+	echo "export PATH=$PATH:/home/`whoami`/bin" >> /home/`whoami`/.zshrc
+	cd /bspwm/examples/panel/
+	cp panel panel_colors panel_bar /home/`whoami`/bin
+	cd ../../..
 }
 
 main() {
 	gitit
 	depit
-	GB #generic build
 	buildAndInstallIt
 	mkDirs
 	copyConfigs
+	echoinitrc
+	setup_panel
 }
 
 main ${*}
