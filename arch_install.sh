@@ -1,5 +1,11 @@
 #!/bin/sh
 
+safet_firs() {
+	curl -O https://raw.githubusercontent.com/bursday/burs/master/iptables.sh
+	source iptables.sh
+	iptables -nvL
+}
+
 checknet() {
 	#check network, set time
 	ping -c 3 archlinux.org
@@ -10,8 +16,12 @@ checknet() {
 
 mkparts() {
 	#create partitions
-	parted -s -a optimal /dev/sdb mklabel gpt
-	parted -s -a optimal /dev/sdb mkpart primary 1 3
+	lsblk
+	echo "Please enter most honorable block device name for skrip to think wit\n"
+	echo "for example: /dev/sdx"
+	read thething
+	parted -s -a optimal ${thething} mklabel gpt
+	parted -s -a optimal ${thething} mkpart primary 1 3
 	parted -s -a optimal /dev/sdb name 1 grub
 	parted -s -a optimal /dev/sdb set 1 bios_grub on
 	parted -s -a optimal /dev/sdb mkpart primary 3 131
@@ -59,6 +69,7 @@ instructs() {
 }
 
 main() {
+	safet_firs
 	checkNet
 	mkparts
 	mkfses
