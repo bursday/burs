@@ -1,6 +1,4 @@
 #! /bin/sh
-
-export PANEL_FIFO="/tmp/panel-fifo"
 sxhkd &
 
 bspc monitor HDMI-0 -d I II III IV V
