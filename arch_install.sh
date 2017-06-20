@@ -57,7 +57,7 @@ tabulate() {
 }
 
 git_files() {
-	wget https://raw.githubusercontent.com/bursday/burs/master/chroot.sh
+	curl -O https://raw.githubusercontent.com/bursday/burs/master/chroot.sh
 	cp chroot.sh /mnt
 }
 
