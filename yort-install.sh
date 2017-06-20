@@ -27,7 +27,7 @@ optionstall() {
 	OPTIONSTALL=""
 	echo "If you are feeling sassy, you may now enter a list of AUR (or not) programs and we will attempt to install.\
 		 press ctrl+c to quit. ofc"
-	read $OPTIONSTALL
+	read OPTIONSTALL
 	yaourt -S $OPTIONSTALL
 }
 main() {
