@@ -3,7 +3,7 @@
 echo "Please enter your timezone frome /usr/share/zoneinfo/foo/bar\n"
 echo "Enter it in the form of 'foo/bar'\n"
 read ZONE
-echo "Thank you. Such appreciate."
+echo "Thank you. Such appreciate.\n"
 
 ln -sf /usr/share/zoneinfo/${ZONE} /etc/localtime
 hwclock --systohc
