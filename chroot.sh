@@ -1,11 +1,16 @@
 #!/bin/bash
 
-ln -sf /usr/share/zoneinfo/America/Chicago /etc/localtime
+echo "Please enter your timezone frome /usr/share/zoneinfo/foo/bar\n"
+echo "Enter it in the form of 'foo/bar'\n"
+read ZONE
+echo "Thank you. Such appreciate."
+
+ln -sf /usr/share/zoneinfo/${ZONE} /etc/localtime
 hwclock --systohc
 echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
 echo "LANG=en_US.UTF-8" > /etc/locale.conf
 locale-gen
-echo "Please enter the name of the most honorable standard user san, kindly."
+echo "Please enter the name of the most honorable host san, kindly."
 read usersan
 echo $usersan > /etc/hostname
 echo "#<ip-address>	<hostname.domain.org>	<hostname>" >> /etc/hosts
