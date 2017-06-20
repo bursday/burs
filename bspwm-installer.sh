@@ -4,14 +4,9 @@
 # things to add:
 # ways to not break an existing install
 
-
 gitit() {
-	git clone https://github.com/baskerville/bspwm.git
-	git clone https://github.com/baskerville/sxhkd.git
-	git clone https://github.com/baskerville/xdo.git
-	git clone https://github.com/baskerville/sutils.git
-	git clone https://github.com/baskerville/xtitle.git
-	git clone https://github.com/LemonBoy/bar.git
+	git clone https://github.com/bursday/bspwm.git
+	git clone https://github.com/bursday/sxhkd.git
 }
 
 depit() {
@@ -28,18 +23,6 @@ buildAndInstallIt() {
 		GB
 	cd ..
 	cd sxhkd
-		GB
-	cd ..
-	cd xdo
-		GB
-	cd ..
-	cd sutils
-		GB
-	cd ..
-	cd xtitle
-		GB
-	cd ..
-	cd bar
 		GB
 	cd ..
 }
