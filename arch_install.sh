@@ -22,28 +22,28 @@ mkparts() {
 	read thething
 	parted -s -a optimal ${thething} mklabel gpt
 	parted -s -a optimal ${thething} mkpart primary 1 3
-	parted -s -a optimal /dev/sdb name 1 grub
-	parted -s -a optimal /dev/sdb set 1 bios_grub on
-	parted -s -a optimal /dev/sdb mkpart primary 3 131
-	parted -s -a optimal /dev/sdb name 2 boot
-	parted -s -a optimal /dev/sdb mkpart primary 131 2179
-	parted -s -a optimal /dev/sdb name 3 swap
-	parted -s -a optimal /dev/sdb mkpart primary 2179 100%
-	parted -s -a optimal /dev/sdb name 4 rootfs
-	parted -s -a optimal /dev/sdb set 2 boot on
+	parted -s -a optimal ${thething} name 1 grub
+	parted -s -a optimal ${thething} set 1 bios_grub on
+	parted -s -a optimal ${thething} mkpart primary 3 131
+	parted -s -a optimal ${thething} name 2 boot
+	parted -s -a optimal ${thething} mkpart primary 131 2179
+	parted -s -a optimal ${thething} name 3 swap
+	parted -s -a optimal ${thething} mkpart primary 2179 100%
+	parted -s -a optimal ${thething} name 4 rootfs
+	parted -s -a optimal ${thething} set 2 boot on
 }
 
 mkfses() {
 	#make file systems!
-	mkfs.ext2 /dev/sdb2
-	mkfs.ext4 /dev/sdb4
+	mkfs.ext2 ${thething}2
+	mkfs.ext4 ${thething}4
 }
 
 mount_parts() {
 	#mount partitions
-	mount /dev/sdb4 /mnt
+	mount ${thething}4 /mnt
 	mkdir /mnt/boot
-	mount /dev/sdb2 /mnt/boot
+	mount ${thething}2 /mnt/boot
 }
 
 #Edit Mirrors
