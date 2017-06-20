@@ -58,19 +58,10 @@ copyConfigs() {
 }
 
 echoinitrc() {
-	echo "export PANEL_FIFO=\"/tmp/panel-fifo\""
 	echo "xrdb merge ./.Xresources &"
 	echo "compton --config .compton.conf &"
 	echo "sxhkd &"
 	echo "exec bspwm"
-}
-
-setup_panel () {
-	mkdir -p /home/`whoami`/bin
-	echo "export PATH=$PATH:/home/`whoami`/bin" >> /home/`whoami`/.zshrc
-	cd /bspwm/examples/panel/
-	cp panel panel_colors panel_bar /home/`whoami`/bin
-	cd ../../..
 }
 
 main() {
@@ -80,7 +71,6 @@ main() {
 	mkDirs
 	copyConfigs
 	echoinitrc
-	setup_panel
 }
 
 main ${*}
