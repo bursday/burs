@@ -3,8 +3,8 @@
 #this thing installs yaourt from the AUR
 
 get() {
-	wget https://aur.archlinux.org/cgit/aur.git/snapshot/package-query.tar.gz
-	wget https://aur.archlinux.org/cgit/aur.git/snapshot/yaourt.tar.gz
+	curl -O https://aur.archlinux.org/cgit/aur.git/snapshot/package-query.tar.gz
+	curl -O https://aur.archlinux.org/cgit/aur.git/snapshot/yaourt.tar.gz
 }
 
 extract() {
